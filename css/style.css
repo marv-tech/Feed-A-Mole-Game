@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #C1C86C;
+}
+
+#mainPage{
+    background-image: url("https://static.wixstatic.com/media/8631b0_fcac52b8cb074fea9f23e9841269c1a1~mv2.jpg/v1/fill/w_654,h_467,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/8631b0_fcac52b8cb074fea9f23e9841269c1a1~mv2.jpg");
+    height: 80%;
+    width: 95%;
+    margin: 50px auto;
+    padding-top: 20px;
+    padding-bottom: 3px;
+}
+
+.divHoles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 50px;
+
+}
+
+.hole{
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    width:250px;
+    height: 250px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.hungryMoleImg{
+    position: absolute;
+    cursor: pointer;
+}
+
+.show{
+    display:block;
+}
+
+.hide{
+    display: none;
+}
+
+.winStyle{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.worm{
+    width: 100%;
+    display: none;
+}
+
+/* Mobile screen */
+@media only screen and (max-width: 1100px){
+    #mainPage{
+        height: 90%;
+    }
+  
+
+}
