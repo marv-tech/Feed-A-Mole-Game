@@ -8,8 +8,8 @@ body{
 
 #mainPage{
     background-image: url("https://static.wixstatic.com/media/8631b0_fcac52b8cb074fea9f23e9841269c1a1~mv2.jpg/v1/fill/w_654,h_467,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/8631b0_fcac52b8cb074fea9f23e9841269c1a1~mv2.jpg");
-    height: 80%;
-    width: 95%;
+    height: 1180px;
+    width: 97%;
     margin: 50px auto;
     padding-top: 20px;
     padding-bottom: 3px;
@@ -53,14 +53,17 @@ body{
 }
 
 .worm{
-    width: 100%;
+    width: 50%;
+    position: fixed;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
     display: none;
 }
 
 /* Mobile screen */
 @media only screen and (max-width: 1100px){
     #mainPage{
-        height: 90%;
+        height: 100%;
     }
   
 
