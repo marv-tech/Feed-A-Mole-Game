@@ -1,71 +1,85 @@
 const mole = document.querySelectorAll('.hungryMoleImg')
+const moleHoles = document.querySelectorAll('.hole')
 
+// Make one of the moles a king mole
 let value = Math.floor(Math.random()*10)+1 ;
-let arr = mole
-let image = arr[value]
 
-image.src="img/king-mole-hungry.png"
+let arr = Array.from(mole);
 
+mole.forEach(moleImg => {
+    moleImg.classList.add('hide');
+    moleImg.classList.remove('show');  
+    })  
 
-let delay=0;
-randomInterval=Math.floor(Math.random() * 5000)+1000;
-
-timeLeft = function(){
-    if (randomInterval <= 1000){
-        timeLeft= 500
-    }else {
-        timeLeft= 1000
-    }
+// Function to generate random time (in milliseconds)
+function getRandomTime(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-setInterval(function () {
-    delay++
-    
-    mole.forEach(moleImg => {
-        if (delay%2 === 0){
+function move (){
+    var kingCounter =0;    
+    const arrObjects = []
+
+    for (const image of arr) {
+        const randomTime = getRandomTime(1000, 10000)
+        
+        setInterval(function(){
+            kingCounter++;
+
+            if(kingCounter%7 === 0){
+                image.src="img/king-mole-hungry.png";
+            }
+
             
-            // setTimeout(function () {
-            //     moleImg.classList.add('hide');
-            //     moleImg.classList.remove('show');
-            // }, timeLeft);
+            image.classList.remove('hide');
+            image.classList.add('show');
 
-            moleImg.classList.add('hide');
-            moleImg.classList.remove('show');  
-                
-        }else{
-            moleImg.classList.remove('hide');
-            moleImg.classList.add('show');
+            setTimeout(() => {
+                image.classList.remove('show');
+                image.classList.add('hide');
+                // image.src="img/mole-leaving.png"
+            }, 2000);
+        }, randomTime)
+    }
+                          
+}
 
-        }
-
-    });
-   
-}, randomInterval)
+move()
 
 
+// create an array of Object,include the image url and the duration, loop over the array
 var score =0;
 var counter =0
 
-
 function  addPoint() { 
+
+    // setInterval(function () {
+
     mole.forEach(moleImg => {moleImg.addEventListener("click",function(){
 
+        click = true;
         const worm = document.querySelector('.worm')
         let part = moleImg.src.slice(22, )
 
         if (part === "img/king-mole-hungry.png" ){
-
             score = score+ 2;
 
             counter= counter + 2;
+
+            moleImg.src ="img/king-mole-fed.png"
+
+            console.log("this was clicked")
+
         }else{
             score++
+            moleImg.src ="img/mole-fed.png"  
         }
 
         counter++
         worm.style.display="block";
-        worm.style.width= (counter * 10)+ '%'
-        
+        worm.style.width= (counter * 10)+ '%';
+
+
         if (counter > 9 && counter < 11){
 
             const mainPage = document.querySelector('#mainPage')
@@ -85,15 +99,12 @@ function  addPoint() {
             winImageDiv.appendChild(winImage);
 
         }
-    
-    }) 
- })
+  
+    })})
+   
 }
       
 addPoint()
 
 
-
-
-// clearInterval(myInterval);
 
