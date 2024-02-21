@@ -1,4 +1,5 @@
 const mole = document.querySelectorAll('.hungryMoleImg')
+
 const moleHoles = document.querySelectorAll('.hole')
 
 // Make one of the moles a king mole
@@ -16,63 +17,64 @@ function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function move (){
-    var kingCounter =0;    
-    const arrObjects = []
+// function move (){
+//     var kingCounter =0;    
+//     const arrObjects = []
 
-    for (const image of arr) {
-        const randomTime = getRandomTime(1000, 10000)
+//     for (const image of arr) {
+//         const randomTime = getRandomTime(1000, 10000)
         
-        setInterval(function(){
-            kingCounter++;
+//         setInterval(function(){
+//             kingCounter++;
 
-            if(kingCounter%7 === 0){
-                image.src="img/king-mole-hungry.png";
-            }
+//             if(kingCounter%7 === 0){
+//                 image.src="img/king-mole-hungry.png";
+//             }
 
-            
-            image.classList.remove('hide');
-            image.classList.add('show');
+//             image.classList.remove('hide');
+//             image.classList.add('show');
 
-            setTimeout(() => {
-                image.classList.remove('show');
-                image.classList.add('hide');
-                // image.src="img/mole-leaving.png"
-            }, 2000);
-        }, randomTime)
-    }
+//             setTimeout(() => {
+//                 image.classList.remove('show');
+//                 image.classList.add('hide');
+//             }, 2000);
+//         }, randomTime)
+//     }
                           
-}
-
-move()
+// }
 
 
-// create an array of Object,include the image url and the duration, loop over the array
+
 var score =0;
 var counter =0
+click = false;
 
 function  addPoint() { 
 
-    // setInterval(function () {
-
     mole.forEach(moleImg => {moleImg.addEventListener("click",function(){
 
-        click = true;
+        
         const worm = document.querySelector('.worm')
         let part = moleImg.src.slice(22, )
 
         if (part === "img/king-mole-hungry.png" ){
-            score = score+ 2;
+            click = true;
+            score = score+ 1;
 
-            counter= counter + 2;
+            counter= counter + 1;
 
             moleImg.src ="img/king-mole-fed.png"
 
-            console.log("this was clicked")
+            console.log(counter)
+            if (click){
+                image.src="img/mole-leaving.png"
+                image.classList.remove('hide');
+                image.classList.add('show');       
+            }
 
         }else{
             score++
-            moleImg.src ="img/mole-fed.png"  
+            moleImg.src ="img/mole-fed.png" 
         }
 
         counter++
@@ -99,8 +101,12 @@ function  addPoint() {
             winImageDiv.appendChild(winImage);
 
         }
-  
+
+        
     })})
+
+    
+
    
 }
       
