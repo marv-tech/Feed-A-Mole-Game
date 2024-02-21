@@ -1,3 +1,5 @@
+
+
 * body{
     box-sizing: border-box;
     background-color: #C1C86C;
@@ -72,6 +74,35 @@
     margin-left: 25%;
 }
 
+
+@media only screen and (max-width: 600px) {
+   .divHoles{
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+   }
+
+   .hole{
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: relative;
+    margin-top: 10px;
+    }
+
+    .hungryMoleImg{
+        width: 100%;
+
+    }
+
+    
+
+  }
 
 
 
