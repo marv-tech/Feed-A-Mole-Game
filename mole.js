@@ -5,28 +5,29 @@ const sad = "img/mole-sad.png";
 const fed = "img/mole-fed.png";
 const leave = "img/mole-leaving.png";
 
-let isHungry = true; 
 let counter = 0;
 
-// Function to generate random time (in milliseconds)
+// Function to generate random time (in milliseconds) within a range
 function getRandomTime(min, max) {
+    if (min > max) {
+        [min, max] = [max, min]; // Swap min and max if min is greater
+    }
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 // Function to simulate changing images 
 function changeImage(img, src) {
     img.src = src;
-    isHungry = src === hungry;
 }
 
 // Function to handle click event on mole
 function clickHandler() { 
     const moleImg = this;
-    let part = moleImg.src.slice(22);
+    let part = moleImg.src.slice(moleImg.src.lastIndexOf('/') + 1);
 
-    if ((part === hungry || part === "king-mole-hungry.png") && part !== "king-mole-leaving.png") {
+    if ((part === "mole-hungry.png" || part === "king-mole-hungry.png") && part !== "king-mole-leaving.png") {
         counter++;
-        moleImg.src = part === "king-mole-hungry.png" ? fed : fed;
+        moleImg.src = fed;
         setTimeout(() => {
             moleImg.src = leave;
         }, getRandomTime(1000, 3000));
@@ -34,9 +35,9 @@ function clickHandler() {
 
     const worm = document.querySelector('.worm-container');
     worm.style.display = "block";
-    worm.style.width = (counter * 5) + '%';
+    worm.style.width = (counter * 10) + '%';
 
-    if (counter > 9 && counter < 11) {
+    if (counter > 4 && counter < 7) {
         const mainPage = document.querySelector('#mainPage');
         mainPage.style.display = "none";
         const winImageDiv = document.createElement('div');
@@ -71,9 +72,6 @@ function animateMole(moleImg, delay) {
         }, 2000); // Delay before transitioning to sad state, adjust as needed
     }, delay); // Delay before starting the animation, adjust as needed
 }
-
-
-
 
 // Create an array of objects
 const moleObjects = Array.from(mole).map(moleImg => {
