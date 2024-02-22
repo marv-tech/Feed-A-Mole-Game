@@ -4,6 +4,10 @@ const hungry = "img/mole-hungry.png";
 const sad = "img/mole-sad.png";
 const fed = "img/mole-fed.png";
 const leave = "img/mole-leaving.png";
+const hungryKing = "img/king-mole-hungry.png"
+const sadKing ="img/king-mole-sad.png"
+const leaveKing ="img/king-mole-leaving.png"
+const fedKing ="img/king-mole-fed.png"
 
 let counter = 0;
 
@@ -26,10 +30,21 @@ function clickHandler() {
     let part = moleImg.src.slice(moleImg.src.lastIndexOf('/') + 1);
 
     if ((part === "mole-hungry.png" || part === "king-mole-hungry.png") && part !== "king-mole-leaving.png") {
-        counter++;
-        moleImg.src = fed;
+        if (part === "king-mole-hungry.png") {
+            counter += 2; // Double the point for a king mole
+            console.log("king", counter)
+            moleImg.src = fedKing; // Change to fed king image
+        } else {
+            counter++;
+            console.log(counter)
+            moleImg.src = fed; // Change to fed image
+        }
         setTimeout(() => {
-            moleImg.src = leave;
+            if (part === "king-mole-hungry.png") {
+                moleImg.src = leaveKing; // Change to leaving king image
+            } else {
+                moleImg.src = leave; // Change to leaving image
+            }
         }, getRandomTime(1000, 3000));
     }
 
@@ -37,18 +52,34 @@ function clickHandler() {
     worm.style.display = "block";
     worm.style.width = (counter * 10) + '%';
 
-    if (counter > 4 && counter < 7) {
+    if (counter > 8 && counter < 10) {
         const mainPage = document.querySelector('#mainPage');
         mainPage.style.display = "none";
         const winImageDiv = document.createElement('div');
         const winImage = document.createElement('img');
-        winImage.classList.add('winStyle');
-        winImage.src = "img/win.png";
+        const winDivText = document.createElement('div');
         const body = document.querySelector('#pageBody');
+
+        // create a win text elemet and its content
+        const winText = document.createElement('p');
+        winText.textContent="YIIPPIIII I'M SO FULL!!!"
+        winText.classList.add('winTextStyle');
+
+        // add styles to the image and the parent div
+        winImage.classList.add('winStyle');
+        winImageDiv.classList.add('winDivStyle');
+
+        // Include the source of the win image
+        winImage.src = "img/win.png";
+       
+        // Append the child element to their parent containers
         body.appendChild(winImageDiv);
         winImageDiv.appendChild(winImage);
+        winImageDiv.appendChild(winDivText);
+        winDivText.appendChild(winText)
     }
 }
+
 
 // Add click event listener for moles
 mole.forEach(moleImg => {
@@ -60,18 +91,40 @@ mole.forEach((moleImg, index) => {
     animateMole(moleImg, index * 2000); // Adjust delay for each mole
 });
 
-// Function to animate each mole
+// Animation loop for each mole
 function animateMole(moleImg, delay) {
     setTimeout(() => {
-        changeImage(moleImg, hungry); // Change image to hungry immediately
+        // Randomly determine if the mole will be a king mole
+        const isKingMole = Math.random() < 0.5;
+
+        if (isKingMole) {
+            // If it's a king mole, set it to hungry king
+            changeImage(moleImg, hungryKing);
+        } else {
+            // If it's a regular mole, set it to hungry
+            changeImage(moleImg, hungry);
+        }
+
         setTimeout(() => {
-            changeImage(moleImg, sad); // Change image to sad after a delay 
+            // Change image to sad or sad king after a delay 
+            if (isKingMole) {
+                changeImage(moleImg, sadKing);
+            } else {
+                changeImage(moleImg, sad);
+            }
+
             setTimeout(() => {
-                changeImage(moleImg, leave); // Change image to leaving after another delay
+                // Change image to leaving or leaving king after another delay
+                if (isKingMole) {
+                    changeImage(moleImg, leaveKing);
+                } else {
+                    changeImage(moleImg, leave);
+                }
             }, 4000);
         }, 2000); // Delay before transitioning to sad state, adjust as needed
     }, delay); // Delay before starting the animation, adjust as needed
 }
+
 
 // Create an array of objects
 const moleObjects = Array.from(mole).map(moleImg => {
