@@ -1,5 +1,4 @@
 
-
 * body{
     box-sizing: border-box;
     background-color: #C1C86C;
@@ -80,7 +79,6 @@
     margin-top: 30px;
     color: rgb(211, 17, 17);
 }
-
 
 @media only screen and (max-width: 600px) {
    .divHoles{

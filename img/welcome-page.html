@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/welcomeStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+    <title>Welcome to mole game</title>
+</head>
+<body>
+
+    <section class="welcomePage">
+        <div> <p class="title">Feed A Mole Game</p> 
+        </div>
+
+        <div class="imgDisplay">
+            <div class="imgContainer">
+                <img src="/img/king-mole-hungry.png" alt="">
+            </div>
+
+            <div class="imgContainer"><img class="moleimg" src="/img/mole-hungry.png" alt="">
+            </div>
+            <div>
+                <img class="moleimg" src="/img/mole-fed.png" alt="">
+            </div>
+
+            <div class="imgContainer">
+                <img src="/img/king-mole-fed.png" alt="">
+            </div>
+            <div>
+                <img class="moleimg" src="/img/king-mole-sad.png" alt=""></div>
+            <div>
+                <img class="moleimg" src="/img/mole-leaving.png" alt="">
+            </div>
+        </div>
+
+        <div>
+            <a href="#Instructions">
+                <button class="btn">Read Instructions &darr;</button>  
+            </a>
+            <a href="/index.html">
+                <button class="btn">Play Game &rarr;</button>
+            </a>
+           
+        </div>
+
+
+    </section>
+
+    <section id="Instructions">
+        <div>
+            <h2 class="instruction-subtitle">How to play   
+            </h2>
+
+            <ul>
+                <li>Click on the 'Play Game' button to start</li>
+                <li>The worm meter above indicates your game progress, feed enough moles to complete the worm meter</li>
+
+                <li>There are 4 mole states;
+                    <ul>
+                        <li>Hungry Mole: This indicates that the mole is hungry and you should click on it to feed it with a worm.</li>
+                        <li>
+                            Fed Mole: This shows a mole with a worm in it's mouth indicating it has been fed.
+                        </li>
+                        <li>
+                            Sad Mole: This indicates that the mole has not been fed.
+                        </li>
+                        <li>
+                           Leaving Mole: This shows a mole leaving the hole.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>There are king moles that could give you double points, aim for them.</li>
+                <li>Each click gives you a point, feed the mole quickly before it disappears.</li>
+            </ul>
+        </div>
+    </section>
+
+
+  
+    <script src="/mole.js"></script>
+</body>
+</html>
