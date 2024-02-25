@@ -17,9 +17,9 @@ When a Hungry mole is clicked, it transitions to a Fed state before proceeding t
 
 There are two distinct types of moles in the game:
 
-1. **Normal Mole**: Clicking on a Normal Mole awards the player with one point.
+1. **Normal Mole**: Clicking on Normal Mole awards the player with one point.
 2. **King Mole**: Clicking on a King Mole rewards the player with two points, making it a more lucrative target for higher scores.
 
 Enjoy the challenge of feeding the moles and aiming for the highest score!
 
-
+Check it out: https://feed-a-mole.netlify.app/
