@@ -1,3 +1,4 @@
+
 const mole = document.querySelectorAll('.hungryMoleImg');
 
 const hungry = "img/mole-hungry.png";
@@ -151,3 +152,6 @@ function appearAndDisappear(moleObjects) {
 }
 
 appearAndDisappear(moleObjects);
+
+
+

@@ -9,34 +9,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
     <title>Welcome to mole game</title>
 </head>
-<body>
+<body id="welcomebody">
 
     <section class="welcomePage">
+        <audio  id="myAudio">
+            <source src="gamesound.mp3"  type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
         <div> <p class="title">Feed A Mole Game</p> 
         </div>
 
-        <div class="imgDisplay">
-            <div class="imgContainer">
-                <img class="moleimg" src="/img/king-mole-hungry.png" alt="">
-            </div>
+        <div class="gallery">
+            <img  src="/img/mole-hungry.png" alt="">
 
-            <div class="imgContainer"><img  src="/img/mole-hungry.png" alt="">
-            </div>
-            <div>
-                <img class="moleimg" src="/img/mole-fed.png" alt="">
-            </div>
+            <img class="moleimg" src="/img/mole-fed.png" alt="">
+                
+            <img class="moleimg" src="/img/king-mole-sad.png" alt="">
 
-            <div class="imgContainer">
-                <img src="/img/king-mole-fed.png" alt="">
-            </div>
-            <div>
-                <img class="moleimg" src="/img/king-mole-sad.png" alt=""></div>
-            <div>
-                <img class="moleimg" src="/img/mole-leaving.png" alt="">
-            </div>
+            <img class="moleimg" src="/img/mole-leaving.png" alt="">
+
+            <img class="moleimg" src="/img/king-mole-hungry.png" alt="">
+
         </div>
 
-        <div>
+        <div  class="btn-grp">
             <a href="#Instructions">
                 <button class="btn">Read Instructions &darr;</button>  
             </a>
@@ -56,7 +52,7 @@
 
             <ul>
                 <li>Click on the 'Play Game' button to start</li>
-                <li>The worm meter above indicates your game progress, feed enough moles to complete the worm meter</li>
+                <li>The worm meter indicates your game progress, feed enough moles to complete the worm meter</li>
 
                 <li>There are 4 mole states;
                     <ul>
@@ -81,6 +77,12 @@
 
 
   
-    <script src="/mole.js"></script>
+    <script>
+        const body =document.querySelector("#welcomebody")
+
+        body.addEventListener("mouseover", event => {
+        document.getElementById('myAudio').play();
+        });
+    </script>
 </body>
 </html>

@@ -18,8 +18,9 @@ a{
     text-decoration: none;
 }
 .title{
-    font-size: 90px;
-    margin-bottom: 55px;
+    font-size: 100px;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
 
 .imgDisplay{
@@ -33,9 +34,28 @@ a{
     /* overflow: clip; */
 }
 
-.moleimg{
-   width: 200px; 
-}
+
+  .gallery  {
+    --d: 6s; /* duration */
+    display: grid;
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg,#0000,#000 10% 90%,#0000);
+  }
+  .gallery > img {
+    grid-area: 1/1;
+    height: 200px;
+    aspect-ratio: 1.5;
+    object-fit: cover;
+    animation: r var(--d) linear infinite;
+  }
+  .gallery > img:nth-child(2) {animation-delay: calc(1*var(--d)/-4)}
+  .gallery > img:nth-child(3) {animation-delay: calc(2*var(--d)/-4)}
+  .gallery > img:nth-child(4) {animation-delay: calc(3*var(--d)/-4)}
+  
+  @keyframes r {
+    75%    {transform: translate(500%)}
+    75.01% {transform: translate( -100%)}
+  }
 
 
 li{
@@ -51,6 +71,10 @@ li{
     margin: 15px;
     width: 245px;
     border: 2px dashed #2c2d1a;
+}
+
+.btn-grp{
+    margin-top: 30px;
 }
 
 .btn:hover{
