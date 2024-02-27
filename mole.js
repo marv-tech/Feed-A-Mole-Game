@@ -1,6 +1,4 @@
-
 const mole = document.querySelectorAll('.hungryMoleImg');
-
 const hungry = "img/mole-hungry.png";
 const sad = "img/mole-sad.png";
 const fed = "img/mole-fed.png";
@@ -9,7 +7,6 @@ const hungryKing = "img/king-mole-hungry.png"
 const sadKing ="img/king-mole-sad.png"
 const leaveKing ="img/king-mole-leaving.png"
 const fedKing ="img/king-mole-fed.png"
-
 let counter = 0;
 
 // Function to generate random time (in milliseconds) within a range
@@ -20,11 +17,25 @@ function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// Function to simulate changing images 
-function changeImage(img, src) {
-    img.src = src;
+// Function to display loss prompt
+function displayLossPrompt() {
+    // Check if the counter is less than the winning criteria
+    if (counter < 8) {
+        // Display loss prompt
+        if (confirm("You lost! Do you want to replay?")) {
+            // Reload the page if player wants to replay
+            window.location.reload();
+        } else {
+            // Handle if player doesn't want to replay
+            console.log("Game over!");
+        }
+    }
 }
 
+// Function to simulate changing images 
+function changeImage(img, src) {
+img.src = src;
+}
 // Function to handle click event on mole
 function clickHandler() { 
     const moleImg = this;
@@ -52,19 +63,45 @@ function clickHandler() {
     const worm = document.querySelector('.worm-container');
     worm.style.display = "block";
     worm.style.width = (counter * 10) + '%';
+  
 
-    if (counter > 8 && counter < 10) {
+    if (counter > 1 && counter <= 3) {
+
         const mainPage = document.querySelector('#mainPage');
         mainPage.style.display = "none";
         const winImageDiv = document.createElement('div');
         const winImage = document.createElement('img');
         const winDivText = document.createElement('div');
+        const winBtnDiv = document.createElement('div');
         const body = document.querySelector('#pageBody');
 
         // create a win text elemet and its content
         const winText = document.createElement('p');
-        winText.textContent="YIIPPIIII I'M SO FULL!!!"
+        winText.textContent="You Won & i'm so full!"
         winText.classList.add('winTextStyle');
+
+        winBtnDiv.classList.add("winBtnDivStyle");
+
+        // create replay button
+        const replayBtn = document.createElement('button');
+        replayBtn.textContent = "Click to replay";
+        replayBtn.classList.add("winBtn");
+
+        // Add event listener to replay button to navigate to game.html
+        replayBtn.addEventListener("click", function() {
+            window.location.href = "game.html"; // Redirect to game.html
+        });
+
+
+        // create back to welcome page button
+        const wlcBckBtn = document.createElement('button');
+        wlcBckBtn.textContent = "Back to home";
+        wlcBckBtn.classList.add("bckBtn");
+
+        // Add event listener to replay button to navigate to game.html
+        wlcBckBtn.addEventListener("click", function() {
+            window.location.href = "index.html"; // Redirect to game.html
+        });
 
         // add styles to the image and the parent div
         winImage.classList.add('winStyle');
@@ -72,12 +109,15 @@ function clickHandler() {
 
         // Include the source of the win image
         winImage.src = "img/win.png";
-       
+    
         // Append the child element to their parent containers
         body.appendChild(winImageDiv);
         winImageDiv.appendChild(winImage);
         winImageDiv.appendChild(winDivText);
         winDivText.appendChild(winText)
+        body.appendChild(winBtnDiv)
+        winBtnDiv.appendChild(replayBtn)
+        winBtnDiv.appendChild( wlcBckBtn)
     }
 }
 
