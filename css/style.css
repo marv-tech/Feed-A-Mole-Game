@@ -112,7 +112,7 @@
     width: 180px;
 }
 
-.bckbtn:hover{
+.winBtn:hover, .bckBtn:hover{
     background-color: #2c2d1a;
     color: white;
     transition: all .5s;

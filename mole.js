@@ -17,20 +17,6 @@ function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// Function to display loss prompt
-function displayLossPrompt() {
-    // Check if the counter is less than the winning criteria
-    if (counter < 8) {
-        // Display loss prompt
-        if (confirm("You lost! Do you want to replay?")) {
-            // Reload the page if player wants to replay
-            window.location.reload();
-        } else {
-            // Handle if player doesn't want to replay
-            console.log("Game over!");
-        }
-    }
-}
 
 // Function to simulate changing images 
 function changeImage(img, src) {
@@ -39,6 +25,7 @@ img.src = src;
 // Function to handle click event on mole
 function clickHandler() { 
     const moleImg = this;
+
     let part = moleImg.src.slice(moleImg.src.lastIndexOf('/') + 1);
 
     if ((part === "mole-hungry.png" || part === "king-mole-hungry.png") && part !== "king-mole-leaving.png") {
@@ -63,9 +50,16 @@ function clickHandler() {
     const worm = document.querySelector('.worm-container');
     worm.style.display = "block";
     worm.style.width = (counter * 10) + '%';
+
+    // Need to fix this
+    worm.addEventListener("change", function(){
+        document.getElementById('#feedAudio').play();
+        console.log("sounddd")
+
+    })
   
 
-    if (counter > 1 && counter <= 3) {
+    if (counter > 4 && counter <= 6) {
 
         const mainPage = document.querySelector('#mainPage');
         mainPage.style.display = "none";
