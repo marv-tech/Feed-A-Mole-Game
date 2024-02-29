@@ -62,7 +62,7 @@ function clickHandler() {
 
     const worm = document.querySelector('.worm-container');
     worm.style.display = "block";
-    worm.style.width = (counter * 10) + '%';
+    worm.style.width = (counter * 16) + '%';
   
 
     if (counter > 5 && counter <= 7) {
