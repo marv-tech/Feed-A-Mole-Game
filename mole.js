@@ -22,8 +22,10 @@ function getRandomTime(min, max) {
 function changeImage(img, src) {
 img.src = src;
 }
+
+
 // Function to handle click event on mole
-function clickHandler() { 
+function clickHandler() {   
     const moleImg = this;
 
     let part = moleImg.src.slice(moleImg.src.lastIndexOf('/') + 1);
@@ -38,6 +40,17 @@ function clickHandler() {
             console.log(counter)
             moleImg.src = fed; // Change to fed image
         }
+
+        // Play sound effect for feeding mole
+        const feedSound = new Audio('feed sound.mp3');
+        feedSound.play()
+            // .then(() => {
+            //     console.log("Sound played successfully");
+            // })
+            // .catch(error => {
+            //     console.error("Error playing sound:", error);
+            // });
+
         setTimeout(() => {
             if (part === "king-mole-hungry.png") {
                 moleImg.src = leaveKing; // Change to leaving king image
@@ -50,16 +63,13 @@ function clickHandler() {
     const worm = document.querySelector('.worm-container');
     worm.style.display = "block";
     worm.style.width = (counter * 10) + '%';
-
-    // Need to fix this
-    worm.addEventListener("change", function(){
-        document.getElementById('#feedAudio').play();
-        console.log("sounddd")
-
-    })
   
 
-    if (counter > 4 && counter <= 6) {
+    if (counter > 5 && counter <= 7) {
+
+        // Add a sound to the win page
+        const winSound = new Audio('mixkit-completion-of-a-level-2063.mp3');
+        winSound.play()
 
         const mainPage = document.querySelector('#mainPage');
         mainPage.style.display = "none";
@@ -113,6 +123,7 @@ function clickHandler() {
         winBtnDiv.appendChild(replayBtn)
         winBtnDiv.appendChild( wlcBckBtn)
     }
+
 }
 
 
@@ -128,6 +139,8 @@ mole.forEach((moleImg, index) => {
 
 // Animation loop for each mole
 function animateMole(moleImg, delay) {
+    
+
     setTimeout(() => {
         // Randomly determine if the mole will be a king mole
         const isKingMole = Math.random() < 0.5;
@@ -140,6 +153,7 @@ function animateMole(moleImg, delay) {
             changeImage(moleImg, hungry);
         }
 
+       
         setTimeout(() => {
             // Change image to sad or sad king after a delay 
             if (isKingMole) {
@@ -156,8 +170,8 @@ function animateMole(moleImg, delay) {
                     changeImage(moleImg, leave);
                 }
             }, 4000);
-        }, 2000); // Delay before transitioning to sad state, adjust as needed
-    }, delay); // Delay before starting the animation, adjust as needed
+        }, 2000); // Delay before transitioning to sad state
+    }, delay); // Delay before starting the animation
 }
 
 
@@ -186,6 +200,4 @@ function appearAndDisappear(moleObjects) {
 }
 
 appearAndDisappear(moleObjects);
-
-
 
