@@ -134,6 +134,12 @@ lossReplaybtn.addEventListener("click", function() {
     window.location.href = "game.html"; // Redirect to game.html
 });
 
+const mobilelossReplaybtn= document.querySelector(".mobilelossReplaybtn")
+
+mobilelossReplaybtn.addEventListener("click", function() {
+    window.location.href = "game.html"; // Redirect to game.html
+});
+
 
 // Add click event listener for moles
 mole.forEach(moleImg => {
