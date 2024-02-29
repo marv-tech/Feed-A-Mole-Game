@@ -104,7 +104,7 @@ function clickHandler() {
 
         // Add event listener to replay button to navigate to game.html
         wlcBckBtn.addEventListener("click", function() {
-            window.location.href = "index.html"; // Redirect to game.html
+            window.location.href = "index.html"; // Redirect to index.html
         });
 
         // add styles to the image and the parent div
@@ -122,9 +122,17 @@ function clickHandler() {
         body.appendChild(winBtnDiv)
         winBtnDiv.appendChild(replayBtn)
         winBtnDiv.appendChild( wlcBckBtn)
-    }
+    }else(
+        console.log("almost there")
+    )
 
 }
+
+const lossReplaybtn= document.querySelector(".lossReplaybtn")
+
+lossReplaybtn.addEventListener("click", function() {
+    window.location.href = "game.html"; // Redirect to game.html
+});
 
 
 // Add click event listener for moles
